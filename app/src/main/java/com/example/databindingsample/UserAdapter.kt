@@ -13,11 +13,11 @@ class UserAdapter(private val items: List<User>) : RecyclerView.Adapter<UserView
     override fun onCreateViewHolder(parent: ViewGroup, viewType: Int): UserViewHolder {
         val inflater = LayoutInflater.from(parent.context)
         val binding: UserRowBinding = DataBindingUtil.inflate(inflater, R.layout.user_row, parent, false)
-        return UserViewHolder(binding)
+        return UserViewHolder(binding) //crate view holder
     }
 
     override fun onBindViewHolder(holder: UserViewHolder, position: Int) {
-        holder.binding.user = items[position]
+        holder.binding.user = items[position] //apply data
     }
 
     override fun getItemCount(): Int {
