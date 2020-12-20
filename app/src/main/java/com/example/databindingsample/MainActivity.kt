@@ -12,6 +12,7 @@ import com.example.databindingsample.databinding.ActivityMainBinding
 class MainActivity : AppCompatActivity() {
 
     private lateinit var binding: ActivityMainBinding
+    private lateinit var adapter: UserAdapter
     private var users: MutableList<User> = mutableListOf()
 
     override fun onCreate(savedInstanceState: Bundle?) {
@@ -31,6 +32,10 @@ class MainActivity : AppCompatActivity() {
         //set divider
         val dividerItemDecoration = DividerItemDecoration(this, RecyclerView.VERTICAL)
         dividerItemDecoration.setDrawable(ContextCompat.getDrawable(this, R.drawable.separator)!!)
+
+        //set adapter
+        adapter = UserAdapter(users)
+        binding.recyclerView.adapter = adapter
 
     }
 }
