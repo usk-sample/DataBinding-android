@@ -6,18 +6,18 @@ import androidx.databinding.DataBindingUtil
 import androidx.recyclerview.widget.RecyclerView
 import com.example.databindingsample.databinding.UserRowBinding
 
-class UserViewHolder(binding: UserRowBinding) : RecyclerView.ViewHolder(binding.root)
+class UserViewHolder(var binding: UserRowBinding) : RecyclerView.ViewHolder(binding.root)
 
-class UserAdapter(private val items: List<User>) : RecyclerView.Adapter<RecyclerView.ViewHolder>() {
+class UserAdapter(private val items: List<User>) : RecyclerView.Adapter<UserViewHolder>() {
 
-    override fun onCreateViewHolder(parent: ViewGroup, viewType: Int): RecyclerView.ViewHolder {
+    override fun onCreateViewHolder(parent: ViewGroup, viewType: Int): UserViewHolder {
         val inflater = LayoutInflater.from(parent.context)
         val binding: UserRowBinding = DataBindingUtil.inflate(inflater, R.layout.user_row, parent, false)
         return UserViewHolder(binding)
     }
 
-    override fun onBindViewHolder(holder: RecyclerView.ViewHolder, position: Int) {
-        
+    override fun onBindViewHolder(holder: UserViewHolder, position: Int) {
+        holder.binding.user = items[position]
     }
 
     override fun getItemCount(): Int {
